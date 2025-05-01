@@ -25,4 +25,5 @@ spec:
             - containerPort: 8000
               name: http
       restartPolicy: Always
-
+      imagePullSecrets:
+        - name: harbor-cred  # Secreto con credenciales de Harbor
