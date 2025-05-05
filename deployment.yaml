@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: iptables-agent
-          image: harbor-core.harbor.svc.cluster.local/myproject/server:latest  # Imagen interna en Kubernetes
+          image: harbor.cdl.local/myproject/server:latest
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true         # requerido para manipular iptables
