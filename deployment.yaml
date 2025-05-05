@@ -26,4 +26,4 @@ spec:
               name: http
       restartPolicy: Always
       imagePullSecrets:
-        - name: harbor-cred  # Secreto con credenciales de Harbor
+        - name: harbor-registry-secret   # Secreto con credenciales de Harbor
