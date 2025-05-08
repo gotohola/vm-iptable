@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: sensor-iptable
+  namespace: argo-events
+spec:
+  dependencies:
+    - name: kafka-iptable-dep
+      eventSourceName: kafka-iptable
+      eventName: iptable-source        # debe coincidir con la clave del EventSource
+  triggers:
+    - template:
+        name: call-iptables-service
+        http:
+          url: http://iptables-agent.iptable.svc.cluster.local:8000/iptables-rule
+          method: POST
+          timeout: 10s
+          payload:
+            - src:
+                dependencyName: kafka-iptable-dep
+                dataKey: body          # cuerpo completo del mensaje Kafka
+              dest: spec.rule          # se convertirá en {"rule": "<mensaje>"}
+          # Argo Events añadirá automáticamente header Content-Type: application/json
+      retryStrategy:
+        steps: 3
+        duration: 5s
+        factor: 2

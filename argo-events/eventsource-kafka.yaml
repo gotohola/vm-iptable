@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: kafka-iptable
+  namespace: argo-events
+spec:
+  kafka:
+    iptable-source:                  # nombre interno del listener
+      url: 10.10.12.159:9092
+      topic: iptable
+      consumerGroup: iptables-agent         # cualquiera único
+      partition: "0"
+      tls:                               # <– omitido porque el broker es plano
+        enabled: false
+      jsonBody: false                    # el mensaje será texto puro
+      # si algún día usas SASL:
+      # authSecret:
+      #   name: kafka-secret
+      #   key: sasl
