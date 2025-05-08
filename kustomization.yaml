@@ -1,6 +1,0 @@
-resources:
-  - deployment.yaml
-  - service.yaml
-  - argo-events/eventbus-nats.yaml
-  - argo-events/eventsource-kafka.yaml
-  - argo-events/sensor-iptables.yaml
