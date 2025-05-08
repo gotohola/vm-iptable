@@ -8,7 +8,8 @@ spec:
     iptable-source:                  # nombre interno del listener
       url: 10.10.12.159:9092
       topic: iptable
-      consumerGroup: iptables-agent         # cualquiera único
+      consumerGroup:
+        groupId: iptables-agent
       partition: "0"
       tls:                               # <– omitido porque el broker es plano
         enabled: false

@@ -14,7 +14,7 @@ spec:
         http:
           url: http://iptables-agent.iptable.svc.cluster.local:8000/iptables-rule
           method: POST
-          timeout: 10s
+          timeout: 10000
           payload:
             - src:
                 dependencyName: kafka-iptable-dep
