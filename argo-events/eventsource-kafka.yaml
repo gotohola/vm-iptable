@@ -6,21 +6,19 @@ metadata:
 spec:
   kafka:
     iptable-source:
-      # 1️⃣  Lista completa de brokers o, al menos, el listener publicado
-      url: PLAINTEXT://10.10.12.159:9092            # (puedes omitir el prefix PLAINTEXT://)
+      #  Solo host:puerto, SIN prefijo
+      url: 10.10.12.159:9092
 
       topic: iptable
 
-      # 2️⃣  Identifica la consumer-group de forma estable
       consumerGroup:
         groupName: iptables-agent
-        rebalanceStrategy: range                  # (por defecto, pero lo dejamos explícito)
+        rebalanceStrategy: range
 
-      # 3️⃣  No fijes la partición salvo que sea imprescindible
+      # Si tienes una sola partición, no añadas 'partition'
       # partition: "0"
 
-      # 4️⃣  Declara la versión de protocolo que Sarama debe usar.
-      #      Kafka 3.9.0 no existe aún en Sarama; usa la más alta soportada: 3.0.0
+      # Versión de protocolo más alta soportada por Sarama
       version: "3.0.0"
 
       jsonBody: true
