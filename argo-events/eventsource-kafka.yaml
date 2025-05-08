@@ -9,6 +9,6 @@ spec:
       url: 10.10.12.159:9092
       topic: iptable
       consumerGroup:
-        groupId: iptables-agent
+        groupName: iptables-agent
       partition: "0"
       jsonBody: true  # o false, según tu formato
