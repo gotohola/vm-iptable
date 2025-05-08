@@ -1,0 +1,4 @@
+resources:
+  - eventbus-nats.yaml
+  - eventsource-kafka.yaml
+  - sensor-iptables.yaml
