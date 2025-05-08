@@ -11,6 +11,4 @@ spec:
       consumerGroup:
         groupId: iptables-agent
       partition: "0"
-      tls:
-        enabled: false  # ← esta línea es obligatoria y debe estar como booleano
-      jsonBody: false
+      jsonBody: true  # o false, según tu formato
