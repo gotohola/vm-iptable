@@ -5,16 +5,12 @@ metadata:
   namespace: argo-events
 spec:
   kafka:
-    iptable-source:                  # nombre interno del listener
+    iptable-source:
       url: 10.10.12.159:9092
       topic: iptable
       consumerGroup:
         groupId: iptables-agent
       partition: "0"
-      tls:                               # <– omitido porque el broker es plano
-        enabled: false
-      jsonBody: false                    # el mensaje será texto puro
-      # si algún día usas SASL:
-      # authSecret:
-      #   name: kafka-secret
-      #   key: sasl
+      tls:
+        enabled: false  # ← esta línea es obligatoria y debe estar como booleano
+      jsonBody: false
