@@ -11,4 +11,4 @@ spec:
       consumerGroup:
         groupName: "iptables-agent"     # ✅ clave y valor
       jsonBody: true
-       version: "3.0.0" # ← puedes quitarla, Sarama autodetecta
+      # version: "3.0.0"  ← puedes quitarla, Sarama autodetecta
