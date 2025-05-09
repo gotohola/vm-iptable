@@ -6,19 +6,9 @@ metadata:
 spec:
   kafka:
     iptable-source:
-      #  Solo host:puerto, SIN prefijo
-      url: 10.10.12.159:9092
-
+      url: 10.10.12.159:9092        # sin “PLAINTEXT://”
       topic: iptable
-
       consumerGroup:
-        groupName: iptables-agent
-        rebalanceStrategy: range
-
-      # Si tienes una sola partición, no añadas 'partition'
-      # partition: "0"
-
-      # Versión de protocolo más alta soportada por Sarama
-      version: "3.0.0"
-
+        groupId: iptables-agent
+      version: "3.0.0"              # o quítalo, Sarama autodetecta
       jsonBody: true
