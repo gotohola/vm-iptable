@@ -6,9 +6,9 @@ metadata:
 spec:
   kafka:
     iptable-source:
-      url: 10.10.12.159:9092        # sin “PLAINTEXT://”
+      url: 10.10.12.159:9092
       topic: iptable
       consumerGroup:
-        groupId: iptables-agent
-      version: "3.0.0"              # o quítalo, Sarama autodetecta
+        groupName: "iptables-agent"     # ✅ clave y valor
       jsonBody: true
+       version: "3.0.0" # ← puedes quitarla, Sarama autodetecta
