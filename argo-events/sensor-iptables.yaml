@@ -7,7 +7,7 @@ spec:
   dependencies:
     - name: kafka-iptable-dep
       eventSourceName: kafka-iptable
-      eventName: iptable-source        # debe coincidir con la clave del EventSource
+      eventName: iptable-source
   triggers:
     - template:
         name: call-iptables-service
@@ -18,9 +18,8 @@ spec:
           payload:
             - src:
                 dependencyName: kafka-iptable-dep
-                dataKey: body          # cuerpo completo del mensaje Kafka
-              dest: spec.rule          # se convertirá en {"rule": "<mensaje>"}
-          # Argo Events añadirá automáticamente header Content-Type: application/json
+                dataKey: body.rule   # <– extrae solo el campo `rule` del mensaje Kafka
+              dest: rule             # <– lo sitúa directamente como clave raíz en el JSON
       retryStrategy:
         steps: 3
         duration: 5s
